@@ -1,0 +1,108 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Valentine?</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      font-family: 'Comic Sans MS', cursive;
+      text-align: center;
+      height: 100vh;
+      margin: 0;
+      overflow: hidden;
+    }
+
+    h1 {
+      margin-top: 80px;
+      font-size: 3rem;
+      color: #b30059;
+    }
+
+    button {
+      font-size: 1.5rem;
+      padding: 15px 30px;
+      margin: 20px;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      background-color: #ff4d88;
+      color: white;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+    }
+
+    #videoSection {
+      display: none;
+    }
+
+    video {
+      width: 80%;
+      max-width: 500px;
+      border-radius: 20px;
+      margin-top: 20px;
+    }
+
+    .kiss {
+      position: absolute;
+      font-size: 2rem;
+      animation: fly 4s linear forwards;
+    }
+
+    @keyframes fly {
+      0% {
+        bottom: 0;
+        opacity: 1;
+        transform: translateX(0);
+      }
+      100% {
+        bottom: 100vh;
+        opacity: 0;
+        transform: translateX(100px);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1>Will you be my Valentine? 💘</h1>
+
+  <div id="buttons">
+    <button onclick="sayYes()">Yes 😍</button>
+    <button onclick="sayYes()">Definitely Yes 💖</button>
+  </div>
+
+  <div id="videoSection">
+    <h1>YAYYYY 💕</h1>
+    <video autoplay loop>
+      <source src="kisses.mp4" type="video/mp4">
+      Your browser does not support video.
+    </video>
+  </div>
+
+  <script>
+    function sayYes() {
+      document.getElementById("buttons").style.display = "none";
+      document.getElementById("videoSection").style.display = "block";
+
+      setInterval(createKiss, 300);
+    }
+
+    function createKiss() {
+      const kiss = document.createElement("div");
+      kiss.className = "kiss";
+      kiss.innerHTML = "💋";
+      kiss.style.left = Math.random() * window.innerWidth + "px";
+      document.body.appendChild(kiss);
+
+      setTimeout(() => {
+        kiss.remove();
+      }, 4000);
+    }
+  </script>
+
+</body>
+</html>
